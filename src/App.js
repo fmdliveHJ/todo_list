@@ -1,27 +1,19 @@
 import './App.css';
 import React, { useState } from 'react';
-import List from './components/List';
 import Form from './components/Form';
 import Lists from './components/Lists';
 
+const initialTododata = localStorage.getItem('todoData')
+	? JSON.parse(localStorage.getItem('todoData'))
+	: [];
+
 export default function App() {
-	const dummyPosts = [
-		{
-			id: '1',
-			title: '공부하기',
-			completed: false,
-		},
-		{
-			id: '2',
-			title: '청소하기',
-			completed: false,
-		},
-	];
-	const [todoData, setTodoData] = useState(dummyPosts);
+	const [todoData, setTodoData] = useState(initialTododata);
 	const [value, setValue] = useState('');
 
 	const handleRemoveClick = () => {
 		setTodoData([]);
+		localStorage.setItem('todoData', JSON.stringify([]));
 	};
 
 	return (
@@ -33,7 +25,12 @@ export default function App() {
 				</div>
 
 				<Lists todoData={todoData} setTodoData={setTodoData} />
-				<Form setValue={setValue} setTodoData={setTodoData} value={value} />
+				<Form
+					setValue={setValue}
+					setTodoData={setTodoData}
+					value={value}
+					todoData={todoData}
+				/>
 			</div>
 		</div>
 	);

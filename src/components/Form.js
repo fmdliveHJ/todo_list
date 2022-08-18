@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Form = ({ setValue, setTodoData, value }) => {
+const Form = ({ setValue, setTodoData, value, todoData }) => {
 	const handleChange = (e) => {
 		setValue(e.target.value);
 	};
@@ -14,6 +14,7 @@ const Form = ({ setValue, setTodoData, value }) => {
 			completed: false,
 		};
 		setTodoData((prev) => [...prev, newTodo]);
+		localStorage.setItem('todoData', JSON.stringify([...todoData, newTodo]));
 		setValue('');
 	};
 
