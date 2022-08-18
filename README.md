@@ -28,5 +28,6 @@ react hooks를 사용하여 Todo-list 구현
 ## 배운 점 & 아쉬운 점
 
 배운점
+tailwindcss를 적용하였습니다.
 
 아쉬운점
